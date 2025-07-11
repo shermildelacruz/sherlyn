@@ -1,0 +1,87 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #1a237e; /* Navy blue */
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.login-container {
+  background: #fff;
+  padding: 3rem 3.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(26,35,126,0.18);
+  width: 100%;
+  max-width: 420px;
+  border-top: 8px solid #ff9800; /* Orange accent */
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.login-container h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #1a237e; /* Navy blue */
+  letter-spacing: 1px;
+  font-size: 2rem;
+}
+.login-container label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  color: #1a237e; /* Navy blue */
+  font-size: 1.05rem;
+}
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="password"],
+.login-container select {
+  width: 100%;
+  height: 44px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1.3rem;
+  border: 1.5px solid #1a237e;
+  border-radius: 6px;
+  font-size: 1.08rem;
+  background: #f9f9f9;
+  color: #1a237e;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus,
+.login-container select:focus {
+  border-color: #ff9800; /* Orange */
+  box-shadow: 0 0 0 2px rgba(255,152,0,0.12);
+}
+.login-container button {
+  width: 100%;
+  padding: 0.9rem;
+  background: #ff9800; /* Orange */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.08rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.7rem;
+}
+.login-container button:hover {
+  background: #fb8c00; /* Darker orange */
+  box-shadow: 0 4px 16px rgba(255,152,0,0.10);
+}
+.login-container .error-message {
+  color: #d32f2f;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  display: none;
+  font-size: 1rem;
+} 

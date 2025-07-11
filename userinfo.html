@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .info-container {
+      background: #fff;
+      padding: 3rem 3.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(26,35,126,0.18);
+      width: 100%;
+      max-width: 420px;
+      border-top: 8px solid #ff9800;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .info-container h2 {
+      color: #1a237e;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .info-list li {
+      margin-bottom: 1.2rem;
+      font-size: 1.08rem;
+      color: #1a237e;
+      background: #f9f9f9;
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      box-shadow: 0 1px 4px rgba(26,35,126,0.06);
+    }
+    .info-label {
+      font-weight: bold;
+      color: #ff9800;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="info-container">
+    <h2>Student Information</h2>
+    <ul class="info-list">
+      <li><span class="info-label">Student ID:</span> <span id="infoStudentId"></span></li>
+      <li><span class="info-label">Full Name:</span> <span id="infoFullName"></span></li>
+      <li><span class="info-label">Age:</span> <span id="infoAge"></span></li>
+      <li><span class="info-label">Department:</span> <span id="infoDepartment"></span></li>
+      <li><span class="info-label">Year Level:</span> <span id="infoYearLevel"></span></li>
+      <li><span class="info-label">Email:</span> <span id="infoEmail"></span></li>
+    </ul>
+  </div>
+  <script type="module" src="./script.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    // ... your firebaseConfig and initialization code ...
+
+    const auth = getAuth();
+    const db = getFirestore();
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          document.getElementById('infoStudentId').textContent = userData.studentId;
+          document.getElementById('infoFullName').textContent = userData.fullName;
+          document.getElementById('infoAge').textContent = userData.age;
+          document.getElementById('infoDepartment').textContent = userData.department;
+          document.getElementById('infoYearLevel').textContent = userData.yearLevel;
+          document.getElementById('infoEmail').textContent = userData.email;
+        } else {
+          // docSnap.data() will be undefined in this case
+          alert("No user data found!");
+        }
+      } else {
+        // No user is signed in, redirect to login
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+</body>
+</html> 

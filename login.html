@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="error-message" id="errorMessage"></div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required autocomplete="username">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required autocomplete="current-password">
+      <button type="submit">Login</button>
+      <button type="button" id="showRegisterBtn" style="margin-top: 0.5rem; background: #fff; color: #ff9800; border: 1.5px solid #ff9800;">Register</button>
+    </form>
+    <form id="registerForm" style="display: none; margin-top: 1.5rem;">
+      <div class="error-message" id="registerErrorMessage"></div>
+      <label for="registerStudentId">Student ID</label>
+      <input type="text" id="registerStudentId" name="registerStudentId" required autocomplete="off">
+      <label for="registerFullName">Full Name</label>
+      <input type="text" id="registerFullName" name="registerFullName" required autocomplete="name">
+      <label for="registerAge">Age</label>
+      <input type="text" id="registerAge" name="registerAge" required>
+      <label for="registerDepartment">Department</label>
+      <select id="registerDepartment" name="registerDepartment" required>
+        <option value="Information Technology">Bachelor of Science in Information Technology (BSIT)</option>
+        <option value="Information System">Bachelor of Science in Information System (BSIS)</option>
+        <option value="Psychology">Bachelor of Science in Psychology (BSP)</option>
+        <option value="Statistics">Bachelor of Science in Statistics (BSS)</option>
+      </select>
+      <label for="registerYearLevel">Year Level</label>
+      <select id="registerYearLevel" name="registerYearLevel" required>
+        <option value="">Select Year Level</option>
+        <option value="1st">1st</option>
+        <option value="2nd">2nd</option>
+        <option value="3rd">3rd</option>
+        <option value="4th">4th</option>
+        <option value="5th">5th</option>
+      </select>
+      <label for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" name="registerEmail" required autocomplete="username">
+      <label for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" name="registerPassword" required autocomplete="new-password">
+      <button type="submit">Register</button>
+      <button type="button" id="showLoginBtn" style="margin-top: 0.5rem; background: #fff; color: #1a237e; border: 1.5px solid #1a237e;">Back to Login</button>
+    </form>
+  </div>
+  <script type="module" src="./script.js"></script>
+  <script type="module">
+    // Toggle between login and register forms
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const showRegisterBtn = document.getElementById('showRegisterBtn');
+    const showLoginBtn = document.getElementById('showLoginBtn');
+
+    showRegisterBtn.addEventListener('click', () => {
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+    });
+    showLoginBtn.addEventListener('click', () => {
+      registerForm.style.display = 'none';
+      loginForm.style.display = 'block';
+    });
+  </script>
+</body>
+</html> 
